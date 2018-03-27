@@ -3,12 +3,27 @@ import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 import Description from './components/Description';
+import EpisodeList from './components/EpisodeList';
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { focusedItem: -1 };
+  }
+
+  handleEpisodeFocus = (episode) => {
+    console.log(episode, 'focused');
+    this.setState({
+      focusedItem: episode.id
+    })
+  }
+
+  handleEpisodeSelect = (episode) => {
+    console.log(episode, 'selected');
   }
 
   render() {
+    const { focusedId } = this.state;
 
     return (
       <View style={styles.container}>
@@ -19,6 +34,12 @@ export default class App extends React.Component {
         <Image 
           style={styles.logo}
           source={require('../assets/logo.png')} 
+        />
+        <EpisodeList
+          style={styles.list}
+          focusedId={focusedId}
+          onItemFocus={this.handleEpisodeFocus}
+          onItemSelect={this.handleEpisodeSelect}
         />
         <Description
           style={styles.description}
