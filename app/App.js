@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
+import Description from './components/Description';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,17 @@ export default class App extends React.Component {
         <Image 
           style={styles.logo}
           source={require('../assets/logo.png')} 
+        />
+        <Description
+          style={styles.description}
+          title="Episode 60 - Jojo's Cup"
+          timestamp="MAR 19, 2018"
+          description={
+            "It's the 60th episode! On today's show, Chris talks about childhood influences. " +
+            "Also discussed: childhood influences, following Sebastian, nude beach babysitters, " +
+            "showing your family love, an email from Uncle Vinny, and bouncy balls. " +
+            "Also, Chris answers a bunch of questions from Twitter. "
+          }
         />
       </View>
     );
